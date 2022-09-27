@@ -10,6 +10,8 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("Breadth-First-Search-Visual-V.2");
+		config.setResizable(false);
+		config.setWindowedMode((BFS.SCREEN_WIDTH * 2) * 16, (BFS.SCREEN_HEIGHT * 2) * 16);
 		new Lwjgl3Application(new BFS(), config);
 	}
 }
