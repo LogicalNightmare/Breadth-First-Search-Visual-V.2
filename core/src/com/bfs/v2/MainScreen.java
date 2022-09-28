@@ -18,6 +18,8 @@ public class MainScreen implements Screen {
 
         camera = new OrthographicCamera();
         viewport = new FitViewport(352, 240, camera);
+
+        Gdx.input.setInputProcessor(new InputController(camera, ui));
     }
 
     @Override
