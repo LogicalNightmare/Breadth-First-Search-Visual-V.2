@@ -54,6 +54,19 @@ public class InputController implements InputProcessor {
                 switch (operationCode) {
                     case 0:
                         ui.grid[coords.y][coords.x] = 0;
+
+                        Point p = new Point(coords.x, coords.y);
+
+                        if(ui.blockedTiles.contains(p)) {
+                            ui.blockedTiles.remove(p);
+                        } else if(ui.start.equals(p)) {
+                            ui.isStart = false;
+                            ui.start = new Point();
+                        } else if(ui.end.equals(p)) {
+                            ui.isEnd = false;
+                            ui.end = new Point();
+                        }
+
                         break;
                     case 1:
                         if(!ui.isStart) {
@@ -75,6 +88,7 @@ public class InputController implements InputProcessor {
                         break;
                     case 4:
                         ui.grid[coords.y][coords.x] = 4;
+                        ui.blockedTiles.add(new Point(coords.x, coords.y));
                         break;
                 }
 

@@ -44,7 +44,7 @@ public class UserInterface {
     public boolean isEnd;
     public Point start;
     public Point end;
-    
+
     public final ArrayList<Point> blockedTiles;
 
     public UserInterface() {
@@ -172,6 +172,7 @@ public class UserInterface {
         isEnd = false;
         start = new Point();
         end = new Point();
+        blockedTiles.clear();
     }
 
     private Point convertGridCoords(Point coords) {
