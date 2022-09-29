@@ -105,7 +105,9 @@ public class InputController implements InputProcessor {
                         break;
                     case 3:
                         operationCode = 3;
-                        //call findpath method
+                        if(ui.isStart && ui.isEnd) {
+                            ui.getPath();
+                        }
                         break;
                     case 4:
                         operationCode = 4;

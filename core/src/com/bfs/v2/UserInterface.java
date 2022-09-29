@@ -5,10 +5,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Path;
 import com.badlogic.gdx.math.Vector3;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class UserInterface {
     private final Texture ui;
@@ -47,6 +49,8 @@ public class UserInterface {
 
     public final ArrayList<Point> blockedTiles;
 
+    public final PathFinder pathFinder;
+
     public UserInterface() {
         ui = new Texture(Gdx.files.internal("interface.png"));
         tiles = new Texture(Gdx.files.internal("tiles.png"));
@@ -83,6 +87,8 @@ public class UserInterface {
         end = new Point();
 
         blockedTiles = new ArrayList<>();
+
+        pathFinder = new PathFinder(grid);
     }
 
     public void drawUI(OrthographicCamera camera, SpriteBatch batch) {
@@ -173,6 +179,16 @@ public class UserInterface {
         start = new Point();
         end = new Point();
         blockedTiles.clear();
+    }
+
+    public void getPath() {
+        LinkedList<Point> path = pathFinder.getPath(start, end, blockedTiles);
+
+        for(Point node : path) {
+            if(!node.equals(end)) {
+                grid[node.y][node.x] = 3;
+            }
+        }
     }
 
     private Point convertGridCoords(Point coords) {
