@@ -44,7 +44,7 @@ public class PathFinder {
         Integer endNode = masterList.get(end);
         LinkedList<Integer> path = new LinkedList<>();
 
-        for(Integer at = endNode; !at.equals(startNode); at = prev[at]) {
+        for(Integer at = endNode; at != null && !at.equals(startNode); at = prev[at]) {
             path.add(at);
         }
 
