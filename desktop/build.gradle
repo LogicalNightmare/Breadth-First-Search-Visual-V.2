@@ -42,10 +42,8 @@ task dist(type: Jar) {
     }
     with jar
     destinationDirectory = file("$buildDir/lib")
-
+}
 jpackageImage.dependsOn dist
-
-
 
 dist.dependsOn classes
 
