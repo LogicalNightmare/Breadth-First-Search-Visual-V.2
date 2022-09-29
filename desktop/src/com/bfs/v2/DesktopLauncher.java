@@ -12,6 +12,7 @@ public class DesktopLauncher {
 		config.setTitle("Breadth-First-Search-Visual-V.2");
 		config.setResizable(false);
 		config.setWindowedMode(704, 480);
+		config.setWindowIcon("assets/bfs_icn.png");
 		new Lwjgl3Application(new BFS(), config);
 	}
 }
